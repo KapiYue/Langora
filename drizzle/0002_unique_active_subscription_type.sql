@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "user_subscriptions_user_type_idx" ON "user_subscriptions" USING btree ("user_id","subscription_type");

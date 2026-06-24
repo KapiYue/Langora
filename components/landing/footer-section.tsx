@@ -1,0 +1,103 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Mail, Twitter, Github, Linkedin } from "lucide-react";
+
+export function FooterSection() {
+  return (
+    <footer className="bg-gray-900 text-white py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Brand */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="col-span-1"
+          >
+            <Link href="/" className="text-2xl font-bold mb-4 block">
+            Lang<span className="text-orange-500">ora</span>
+            </Link>
+            <p className="text-gray-400 mb-6 leading-relaxed">
+              Master Chinese typing through interactive lessons designed for English speakers.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Product */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="font-semibold mb-4">Product</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li><Link href="#features" className="hover:text-white transition-colors">Features</Link></li>
+              <li><Link href="#pricing" className="hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Roadmap</Link></li>
+            </ul>
+          </motion.div>
+
+          {/* Learning */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="font-semibold mb-4">Learning</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li><Link href="#" className="hover:text-white transition-colors">Course Catalog</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Learning Path</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Progress Tracking</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Certificates</Link></li>
+            </ul>
+          </motion.div>
+
+          {/* Support */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="font-semibold mb-4">Support</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li><Link href="#" className="hover:text-white transition-colors">Help Center</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Contact Us</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Terms of Service</Link></li>
+            </ul>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2024 Langora. All rights reserved.</p>
+        </motion.div>
+      </div>
+    </footer>
+  );
+} 

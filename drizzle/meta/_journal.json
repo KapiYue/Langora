@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1753181886719,
+      "tag": "0000_real_red_shift",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1781685960161,
+      "tag": "0001_silly_miss_america",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1781864317968,
+      "tag": "0002_unique_active_subscription_type",
+      "breakpoints": true
+    }
+  ]
+}
