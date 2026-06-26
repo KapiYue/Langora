@@ -231,7 +231,7 @@ export default async function BillingPage() {
             </div>
             <div className="flex gap-4">
               <Button variant="outline" asChild>
-                <a href="mailto:support@type-cn.com">
+                <a href="mailto:support@joy-codex.com">
                   Contact Support
                 </a>
               </Button>

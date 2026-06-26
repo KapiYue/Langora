@@ -15,7 +15,7 @@ export default function TermsOfServicePage() {
           These Terms of Service (&quot;Terms&quot;) govern your access to
           and use of Langora (&quot;Langora,&quot; &quot;we,&quot;
           &quot;us,&quot; or &quot;our&quot;), available at{" "}
-          <a href="https://getlangora.vercel.app">getlangora.vercel.app</a>{" "}
+          <a href="https://langora.joy-codex.com">https://langora.joy-codex.com</a>{" "}
           (the &quot;Service&quot;). By creating an account or using the
           Service, you agree to be bound by these Terms. If you do not
           agree, do not use the Service.
@@ -42,7 +42,7 @@ export default function TermsOfServicePage() {
           </li>
           <li>
             You must notify us immediately at{" "}
-            <a href="mailto:ellnazhang520@gmail.com">ellnazhang520@gmail.com</a>{" "}
+            <a href="mailto:support@joy-codex.com">support@joy-codex.com</a>{" "}
             if you suspect unauthorized use of your account.
           </li>
         </ul>
@@ -91,7 +91,7 @@ export default function TermsOfServicePage() {
           We offer a 30-day money-back guarantee on new purchases (Monthly
           Pro, Lifetime Access, and single-lesson purchases). If you are
           not satisfied, contact us within 30 days of your purchase at{" "}
-          <a href="mailto:ellnazhang520@gmail.com">ellnazhang520@gmail.com</a> to
+          <a href="mailto:support@joy-codex.com">support@joy-codex.com</a> to
           request a refund. Refunds are issued at our discretion outside
           of this window, except where required by applicable consumer
           protection law.
@@ -219,7 +219,7 @@ export default function TermsOfServicePage() {
         <ul>
           <li>
             Email:{" "}
-            <a href="mailto:ellnazhang520@gmail.com">ellnazhang520@gmail.com</a>
+            <a href="mailto:support@joy-codex.com">support@joy-codex.com</a>
           </li>
           <li>Operator: JanaZhang (an individual)</li>
           <li>Address: Jiaocheng District, Ningde City, Fujian Province, China</li>

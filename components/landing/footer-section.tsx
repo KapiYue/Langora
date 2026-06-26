@@ -81,7 +81,7 @@ export function FooterSection() {
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-gray-400">
               <li><Link href="#" className="hover:text-white transition-colors">Help Center</Link></li>
-              <li><a href="mailto:ellnazhang520@gmail.com" className="hover:text-white transition-colors">Contact Us</a></li>
+              <li><a href="mailto:support@joy-codex.com" className="hover:text-white transition-colors">Contact Us</a></li>
               <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
             </ul>
@@ -95,7 +95,7 @@ export function FooterSection() {
           viewport={{ once: true }}
           className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
         >
-          <p>&copy; 2024 Langora. All rights reserved.</p>
+          <p>&copy; 2025 Langora. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>

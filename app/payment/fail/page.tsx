@@ -94,10 +94,10 @@ function PaymentFailContent() {
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Need help? Contact our support team at{' '}
               <a 
-                href="mailto:support@type-cn.com" 
+                href="mailto:support@joy-codex.com" 
                 className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
               >
-                support@type-cn.com
+                support@joy-codex.com
               </a>
             </p>
           </div>

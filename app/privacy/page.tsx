@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
         <p>
           Langora (&quot;Langora,&quot; &quot;we,&quot; &quot;us,&quot; or
           &quot;our&quot;) operates the website{" "}
-          <a href="https://getlangora.vercel.app">getlangora.vercel.app</a>{" "}
+          <a href="https://langora.joy-codex.com">https://langora.joy-codex.com</a>{" "}
           and the Langora learning platform (together, the
           &quot;Service&quot;). This Privacy Policy explains what
           information we collect, how we use it, and what rights you have
@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage() {
           <li>
             <strong>Communications:</strong> any information you provide
             when you contact us for support (e.g. via email at{" "}
-            <a href="mailto:ellnazhang520@gmail.com">ellnazhang520@gmail.com</a>
+            <a href="mailto:support@joy-codex.com">support@joy-codex.com</a>
             ).
           </li>
         </ul>
@@ -176,7 +176,7 @@ export default function PrivacyPolicyPage() {
           EU/UK users have these rights under the GDPR; California
           residents have similar rights under the CCPA/CPRA. To exercise
           any of these rights, contact us at{" "}
-          <a href="mailto:ellnazhang520@gmail.com">ellnazhang520@gmail.com</a>.
+          <a href="mailto:support@joy-codex.com">support@joy-codex.com</a>.
           We will respond within the timeframe required by applicable law.
         </p>
 
@@ -224,7 +224,7 @@ export default function PrivacyPolicyPage() {
         <ul>
           <li>
             Email:{" "}
-            <a href="mailto:ellnazhang520@gmail.com">ellnazhang520@gmail.com</a>
+            <a href="mailto:support@joy-codex.com">support@joy-codex.com</a>
           </li>
           <li>Operator: JanaZhang (an individual)</li>
           <li>Address: Jiaocheng District, Ningde City, Fujian Province, China</li>
