@@ -25,7 +25,7 @@ Read an English prompt, hear the audio, type the **pinyin** — get instant, gam
 
 Lessons are grouped by theme — Greetings, Casual Conversation, Ordering Food, and more — and the content is monetized through a monthly subscription, a lifetime plan, and single‑lesson purchases.
 
-🔗 Live demo: `[https://getlangora.vercel.app/]` · 📦 Repository: `[GitHub Repository](https://github.com/KapiYue/Langora)`
+🔗 Live demo: `[https://langora.joy-codex.com]` · 📦 Repository: `[GitHub Repository](https://github.com/KapiYue/Langora)`
 
 ## Screenshots
 

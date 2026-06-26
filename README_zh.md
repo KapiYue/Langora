@@ -29,7 +29,7 @@
 
 课程按主题（问候、日常对话、餐厅点餐等）组织，并通过月度订阅、终身会员与单课购买实现内容变现。
 
-🔗 在线演示：`<DEMO_URL>` · 📦 仓库地址：`[GitHub Repository](https://github.com/KapiYue/Langora)`
+🔗 在线演示：`https://langora.joy-codex.com` · 📦 仓库地址：`[GitHub Repository](https://github.com/KapiYue/Langora)`
 
 ## 界面预览
 
