@@ -109,7 +109,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="grid grid-cols-3 gap-8 pt-12 max-w-md mx-auto"
+            className="grid grid-cols-2 gap-8 pt-12 max-w-md mx-auto"
           >
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">1000+</div>
@@ -118,10 +118,6 @@ export function HeroSection() {
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-orange-500 dark:text-orange-400">20+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Interactive Lessons</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">10,000+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Learning Sessions</div>
             </div>
           </motion.div>
         </motion.div>

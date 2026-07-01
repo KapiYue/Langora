@@ -236,7 +236,7 @@ export default async function BillingPage() {
                 </a>
               </Button>
               <Button variant="outline" asChild>
-                <a href="#" target="_blank">
+                <a href="/terms" target="_blank">
                   View Terms
                 </a>
               </Button>

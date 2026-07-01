@@ -71,8 +71,8 @@ export function AboutSection() {
             </div>
             <h3 className="text-xl font-semibold mb-4">Community Driven</h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Join thousands of learners worldwide. Share progress, compete in challenges, 
-              and learn from the community.
+              Track your own progress and stay motivated with a learning experience 
+              built around consistency and feedback.
             </p>
           </motion.div>
         </div>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Mail, Twitter, Github, Linkedin } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export function FooterSection() {
   return (
@@ -24,16 +24,7 @@ export function FooterSection() {
               Master Chinese typing through interactive lessons designed for English speakers.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="mailto:support@joy-codex.com" className="text-gray-400 hover:text-white transition-colors">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -51,23 +42,6 @@ export function FooterSection() {
               <li><Link href="#features" className="hover:text-white transition-colors">Features</Link></li>
               <li><Link href="#pricing" className="hover:text-white transition-colors">Pricing</Link></li>
               <li><Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Roadmap</Link></li>
-            </ul>
-          </motion.div>
-
-          {/* Learning */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h4 className="font-semibold mb-4">Learning</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><Link href="#" className="hover:text-white transition-colors">Course Catalog</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Learning Path</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Progress Tracking</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Certificates</Link></li>
             </ul>
           </motion.div>
 
@@ -80,7 +54,6 @@ export function FooterSection() {
           >
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><Link href="#" className="hover:text-white transition-colors">Help Center</Link></li>
               <li><a href="mailto:support@joy-codex.com" className="hover:text-white transition-colors">Contact Us</a></li>
               <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
