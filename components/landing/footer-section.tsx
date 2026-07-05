@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 
 export function FooterSection() {
   return (
@@ -17,8 +18,8 @@ export function FooterSection() {
             viewport={{ once: true }}
             className="col-span-1"
           >
-            <Link href="/" className="text-2xl font-bold mb-4 block">
-            Lang<span className="text-orange-500">ora</span>
+            <Link href="/" className="mb-4 inline-flex transition-opacity hover:opacity-85">
+              <BrandLogo inverted markClassName="h-9 w-9" textClassName="text-2xl" />
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Master Chinese typing through interactive lessons designed for English speakers.

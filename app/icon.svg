@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="langora-icon" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="52%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#langora-icon)"/>
+  <path d="M18 18v27.5c0 2 1.6 3.6 3.6 3.6H46" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+  <path d="M22 18h17.5c5.2 0 9.5 4.2 9.5 9.4 0 5.3-4.3 9.6-9.5 9.6H29" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".9" stroke-width="5"/>
+  <text x="38" y="37" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="middle">文</text>
+</svg>

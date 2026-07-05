@@ -8,6 +8,7 @@ import { FeaturesSection } from "@/components/landing/features-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { FooterSection } from "@/components/landing/footer-section";
+import { BrandLogo } from "@/components/brand-logo";
 
 export default function Home() {
   return (
@@ -16,8 +17,8 @@ export default function Home() {
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 sticky top-0 bg-background/80 backdrop-blur-sm z-50">
         <div className="w-full max-w-7xl flex justify-between items-center p-3 px-5 text-sm">
           <div className="flex gap-5 items-center font-semibold">
-            <Link href={"/"} className="text-xl font-bold text-primary">
-            Lang<span className="text-orange-500">ora</span>
+            <Link href={"/"} className="transition-opacity hover:opacity-85">
+              <BrandLogo markClassName="h-8 w-8" />
             </Link>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">

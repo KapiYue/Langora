@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Home, BookOpen, Crown, CreditCard, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { BrandLogo } from "@/components/brand-logo";
 
 const navigation = [
   { name: "Home", href: "/dashboard", icon: Home },
@@ -46,8 +47,8 @@ export function DashboardSidebar() {
       )}>
         <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:bg-gray-900 px-6 border-r border-gray-200 dark:border-gray-700">
           <div className="flex h-16 shrink-0 items-center">
-            <Link href="/" className="text-2xl font-bold">
-              Lang<span className="text-orange-500">ora</span>
+            <Link href="/" className="transition-opacity hover:opacity-85">
+              <BrandLogo markClassName="h-8 w-8" textClassName="text-2xl" />
             </Link>
           </div>
           <nav className="flex flex-1 flex-col">

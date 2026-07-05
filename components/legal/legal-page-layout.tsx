@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { FooterSection } from "@/components/landing/footer-section";
+import { BrandLogo } from "@/components/brand-logo";
 
 interface LegalPageLayoutProps {
   title: string;
@@ -18,8 +19,8 @@ export function LegalPageLayout({
       {/* Navigation - 与首页保持一致的简洁导航 */}
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 sticky top-0 bg-background/80 backdrop-blur-sm z-50">
         <div className="w-full max-w-7xl flex justify-between items-center p-3 px-5 text-sm">
-          <Link href="/" className="text-xl font-bold text-primary">
-            Lang<span className="text-orange-500">ora</span>
+          <Link href="/" className="transition-opacity hover:opacity-85">
+            <BrandLogo markClassName="h-8 w-8" />
           </Link>
           <Link
             href="/"

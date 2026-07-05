@@ -25,6 +25,14 @@ const defaultUrl = process.env.VERCEL_URL
       "learn chinese online",
       "typing chinese",
     ],
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon.svg", type: "image/svg+xml" },
+      ],
+      shortcut: "/favicon.ico",
+      apple: "/icon.svg",
+    },
   };
 
 const geistSans = Geist({
