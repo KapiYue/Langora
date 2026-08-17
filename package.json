@@ -9,7 +9,8 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "db:seed": "tsx scripts/setup-db.ts"
+    "db:seed": "tsx scripts/setup-db.ts",
+    "keepalive": "tsx scripts/keepalive.ts"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.1",
