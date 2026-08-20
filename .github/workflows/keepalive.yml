@@ -81,9 +81,24 @@ jobs:
           run            : ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
           EOF
 
-          # blob -> tree（单文件，权限 100644）-> commit（不带 -p，即孤儿提交）
+          # 这个分支是孤儿分支，只有一个 HEARTBEAT 文件，没有 package.json。
+          # Vercel 默认给每个分支都建 preview 部署，于是每次心跳都会失败一次
+          # （No Next.js version detected）。带上 vercel.json 明确关掉这个分支的部署。
+          cat > "$RUNNER_TEMP/vercel.json" <<'EOF'
+          {
+            "git": {
+              "deploymentEnabled": {
+                "keepalive": false
+              }
+            }
+          }
+          EOF
+
+          # blob -> tree（权限 100644）-> commit（不带 -p，即孤儿提交）
           blob=$(git hash-object -w "$RUNNER_TEMP/HEARTBEAT")
-          tree=$(printf '100644 blob %s\tHEARTBEAT\n' "$blob" | git mktree)
+          vercel_blob=$(git hash-object -w "$RUNNER_TEMP/vercel.json")
+          tree=$(printf '100644 blob %s\tHEARTBEAT\n100644 blob %s\tvercel.json\n' \
+            "$blob" "$vercel_blob" | git mktree)
           commit=$(git commit-tree "$tree" -m "chore: keepalive heartbeat ${now}")
 
           git push --force origin "${commit}:refs/heads/keepalive"
