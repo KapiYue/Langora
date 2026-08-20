@@ -2,7 +2,8 @@
 #   1) Supabase 免费版 7 天无数据库活动就会暂停项目（整站挂掉、Creem webhook 丢失），
 #      所以定时执行一次 `select now()`。
 #   2) GitHub 会把「仓库 60 天没有任何活动」的 schedule 工作流自动禁用 —— 也就是说
-#      保活任务自己会先死。所以本工作流在仓库长期没提交时，会推一个空提交把自己续命。
+#      保活任务自己会先死。所以每次运行都往 keepalive 孤儿分支推一次心跳，
+#      产生 push 活动重置 60 天倒计时。
 name: Keepalive
 
 on:
@@ -16,13 +17,8 @@ on:
     # 连续失败两三次也不至于出事。
     - cron: '0 3 */2 * *'
   workflow_dispatch:
-    inputs:
-      force_commit:
-        description: '强制推送一个空提交（用于手动重置 60 天倒计时）'
-        type: boolean
-        default: false
 
-# 默认的 GITHUB_TOKEN 只有读权限，推空提交需要写。
+# 默认的 GITHUB_TOKEN 只有读权限，推心跳需要写。
 permissions:
   contents: write
 
@@ -36,13 +32,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         # persist-credentials 默认为 true，后面的 git push 直接复用这份凭据。
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       # 只需要 tsx / dotenv / drizzle-orm / postgres，但用 lockfile 装全套最省心也最稳定。
@@ -58,26 +54,35 @@ jobs:
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY }}
         run: npm run keepalive
 
-      # 让定时任务自己不被 GitHub 禁用：仓库超过 MAX_QUIET_DAYS 天没有新提交时，
-      # 推一个空提交（不改任何文件，只产生一次 push 活动）重置 60 天倒计时。
+      # 让定时任务自己不被 GitHub 禁用：每次运行都往 keepalive 分支推一个只含
+      # HEARTBEAT 文件的孤儿提交（无 parent），强推覆盖，所以分支永远只有一个提交，
+      # 既不污染 main 的历史，也不会越堆越大。
+      # 用 git 底层命令直接造对象，不碰工作区，也不需要额外 checkout。
       # 注意：用 GITHUB_TOKEN 推送不会触发其他 workflow，不会造成递归。
-      - name: Keep this schedule enabled
+      #
+      # if: always() —— 上面连数据库那步失败时，这步照样要跑：DB 挂了是一回事，
+      # 定时任务被 GitHub 禁用（连重试机会都没有）是更糟的另一回事。
+      - name: Heartbeat
+        if: always()
         env:
-          MAX_QUIET_DAYS: '45' # 留 15 天缓冲，够连续失败好几次
-          FORCE: ${{ inputs.force_commit }}
+          GIT_AUTHOR_NAME: 'github-actions[bot]'
+          GIT_AUTHOR_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com'
+          GIT_COMMITTER_NAME: 'github-actions[bot]'
+          GIT_COMMITTER_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com'
         run: |
           set -euo pipefail
-          last_commit=$(git log -1 --format=%ct)
-          quiet_days=$(( ( $(date +%s) - last_commit ) / 86400 ))
-          echo "距离上次提交：${quiet_days} 天（阈值 ${MAX_QUIET_DAYS} 天）"
+          now=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
 
-          if [ "$FORCE" != "true" ] && [ "$quiet_days" -lt "$MAX_QUIET_DAYS" ]; then
-            echo "仓库仍有活动，无需保活提交。"
-            exit 0
-          fi
+          cat > "$RUNNER_TEMP/HEARTBEAT" <<EOF
+          last heartbeat : ${now}
+          main commit    : ${GITHUB_SHA}
+          run            : ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          EOF
 
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit --allow-empty -m 'chore: keepalive（重置 GitHub 定时任务 60 天倒计时）'
-          git push origin HEAD:${{ github.ref_name }}
-          echo "已推送空提交。"
+          # blob -> tree（单文件，权限 100644）-> commit（不带 -p，即孤儿提交）
+          blob=$(git hash-object -w "$RUNNER_TEMP/HEARTBEAT")
+          tree=$(printf '100644 blob %s\tHEARTBEAT\n' "$blob" | git mktree)
+          commit=$(git commit-tree "$tree" -m "chore: keepalive heartbeat ${now}")
+
+          git push --force origin "${commit}:refs/heads/keepalive"
+          echo "心跳已推送：${commit}"
