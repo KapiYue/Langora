@@ -11,8 +11,8 @@
 
 ## 组成
 
-- [`scripts/keepalive.ts`](../scripts/keepalive.ts) — 执行 `select now()`（唯一必须成功的一步），再顺手 ping 一次 Supabase REST（失败只告警）。
-- [`.github/workflows/keepalive.yml`](../.github/workflows/keepalive.yml) — 每 2 天 UTC 03:17（北京时间 11:17）跑一次，分钟数刻意避开整点高峰；跑完往 `keepalive` 分支推一次心跳，重置 GitHub 的 60 天倒计时。
+- [`scripts/keepalive.ts`](../scripts/keepalive.ts) — 校验连接串确实属于 Langora 项目，然后在只读事务中查询真实业务表 `public.lessons`；只返回是否存在课程，不读取课程或用户内容。
+- [`.github/workflows/keepalive.yml`](../.github/workflows/keepalive.yml) — 每天 UTC 00:17、08:17、16:17（北京时间 08:17、16:17、次日 00:17）执行；跑完往 `keepalive` 分支推一次心跳，重置 GitHub 的 60 天倒计时。
 
 ### 心跳分支
 
@@ -38,11 +38,9 @@ blob（HEARTBEAT 文件）→ tree（单文件）→ commit（不带 -p，即孤
 
    | Secret | 必需 | 说明 |
    | --- | --- | --- |
-   | `DATABASE_URL` | 是 | 与 `.env.local` 同一个值，建议用 pooler 连接串 |
-   | `NEXT_PUBLIC_SUPABASE_URL` | 否 | 缺失时脚本跳过 REST ping |
-   | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY` | 否 | 同上 |
+   | `DATABASE_URL` | 是 | Langora 项目 `wzqnbezmhkngwijqside` 的连接串，建议使用 pooler |
 
-2. 推送本次改动后，到 **Actions → Keepalive → Run workflow** 手动跑一次，确认是绿的，并确认分支列表里出现了 `keepalive`。
+2. 推送本次改动后，到 **Actions → Supabase Keepalive → Run workflow** 手动跑一次，确认是绿的，并确认分支列表里出现了 `keepalive`。
 3. 开启失败邮件通知 —— 保活任务红了必须有人知道。这是**账号级设置，仓库里没有开关**：
    - 打开 <https://github.com/settings/notifications>，找到 **Actions** 一节
    - 勾选 **Email**，并勾上 **Only notify for failed workflows**（否则每两天成功一次也发信，很快就会被划进垃圾箱）
@@ -57,7 +55,8 @@ npm run keepalive
 ## 注意事项
 
 - **不要给 `keepalive` 分支加保护规则**，它每次都是强推覆盖，保护规则会直接让保活失效。也别对着它的"只有一个提交、没有历史"感到奇怪，那是设计如此。
-- 定时任务在 GitHub 高负载时会延迟几分钟到几十分钟，属正常现象；2 天一次的频率完全不受影响。
+- 定时任务在 GitHub 高负载时会延迟几分钟到几十分钟，属正常现象。
+- 成功执行保活查询也不能保证免费项目一定不会被暂停；收到后续预警时，以 Supabase 控制台状态为准。
 - 判断 Supabase 项目是否还活着时，**别只凭本机 `nslookup` 解析不到就下结论**（见下）。以 Supabase 控制台为准。
 
 ## 历史记录
